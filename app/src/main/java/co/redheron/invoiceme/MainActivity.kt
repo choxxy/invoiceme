@@ -115,25 +115,44 @@ fun DashboardCard(title: String, subTitle: String) {
 
 @Composable
 fun RecentListItem(title: String, subTitle: String) {
-    Row(modifier = Modifier
+    Column(modifier = Modifier
         .background(Color.White)
         .fillMaxWidth()
-        .height(32.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(text = title,
-            style = TextStyle(fontSize = 14.sp,
-                fontWeight = FontWeight.W400,
-                textAlign = TextAlign.Start),
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.5f))
-        Text(text = subTitle,
-            style = TextStyle(fontSize = 14.sp,
-                fontWeight = FontWeight.W200,
-                textAlign = TextAlign.End), modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.5f))
+        .padding(vertical = 8.dp)) {
+        Row(modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = title,
+                style = TextStyle(fontSize = 14.sp,
+                    fontWeight = FontWeight.W400,
+                    textAlign = TextAlign.Start),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.5f))
+            Text(text = subTitle,
+                style = TextStyle(fontSize = 14.sp,
+                    fontWeight = FontWeight.W200,
+                    textAlign = TextAlign.End), modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.5f))
+        }
+        Row(modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = "KES 5,0000",
+                style = TextStyle(fontSize = 12.sp,
+                    fontWeight = FontWeight.W200,
+                    textAlign = TextAlign.Start),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.5f))
+            Text(text = "Paid",
+                style = TextStyle(fontSize = 12.sp,
+                    fontWeight = FontWeight.W200,
+                    textAlign = TextAlign.End), modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.5f))
+        }
     }
 }
 
@@ -178,7 +197,7 @@ fun Dashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
                     Column(modifier = Modifier.background(Color.White)) {
                         Row(modifier = Modifier
                             .height(36.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = "Recent Activity",
+                            Text(text = "Recent Invoice",
                                 style = TextStyle(fontSize = 14.sp,
                                     textAlign = TextAlign.Center), modifier = Modifier
                                     .fillMaxWidth())

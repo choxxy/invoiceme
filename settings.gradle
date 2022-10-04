@@ -16,3 +16,4 @@ rootProject.name = "Invoice Me"
 include ':app'
 include ':features:dashboard'
 include ':core:common'
+include ':features:onboarding'
