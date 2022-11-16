@@ -46,30 +46,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-val list = listOf(DashboardItem("100,000", "Paid"),
-    DashboardItem("40,000", "Outstanding"),
-    DashboardItem("4,000", "Upcoming"),
-    DashboardItem("100", "Total")
-)
-
-val list2 = listOf(
-    DashboardItem("Post a product", "16 Feb 2022"),
-    DashboardItem("Post a product", "15 March 2022"),
-    DashboardItem("Post a product", "14 April 2022"),
-    DashboardItem("Post a product", "16 May 2022"),
-    DashboardItem("Post a product", "16 May 2022"),
-)
-
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun SettingsDefaultPreview() {
     Dashboard(list, list2)
 }
 
-data class DashboardItem(val title: String, val subTitle: String)
-
 @Composable
-fun DashboardCard(title: String, subTitle: String) {
+fun SettingsDashboardCard(title: String, subTitle: String) {
     Card(shape = RoundedCornerShape(4.dp), elevation = CardDefaults.cardElevation(8.dp)) {
         Row(modifier = Modifier
             .height(72.dp)
@@ -97,7 +81,7 @@ fun DashboardCard(title: String, subTitle: String) {
 }
 
 @Composable
-fun RecentListItem(title: String, subTitle: String) {
+fun SettingsRecentListItem(title: String, subTitle: String) {
     Column(modifier = Modifier
         .background(Color.White)
         .fillMaxWidth()
@@ -141,12 +125,12 @@ fun RecentListItem(title: String, subTitle: String) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Dashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
+fun SettingsDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.app_name)) },
+                title = { Text(text = stringResource(id = R.string.dummy_name)) },
                 navigationIcon = {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(Icons.Filled.ArrowBack, null)

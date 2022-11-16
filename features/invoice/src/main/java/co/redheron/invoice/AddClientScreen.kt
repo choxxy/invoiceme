@@ -146,7 +146,7 @@ fun Dashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.app_name)) },
+                title = { Text(text = stringResource(id = R.string.dummy_name)) },
                 navigationIcon = {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(Icons.Filled.ArrowBack, null)
