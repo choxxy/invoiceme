@@ -1,4 +1,4 @@
-package com.redheron.onboarding
+package co.redheron.onboarding
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen() {
+fun RegistrationScreen() {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     Box {
@@ -41,7 +41,7 @@ fun LoginScreen() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(text = "LOGIN",
+            Text(text = "Sign Up",
                 modifier = Modifier.fillMaxWidth(),
                 style = TextStyle(fontSize = 16.sp,
                     fontWeight = FontWeight.W400,
@@ -51,7 +51,7 @@ fun LoginScreen() {
 
             OutlinedTextField(value = email, onValueChange = {
                 email = it
-            }, label = { Text(text = "Username") }, modifier = Modifier.fillMaxWidth())
+            }, label = { Text(text = "Email") }, modifier = Modifier.fillMaxWidth())
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -60,42 +60,34 @@ fun LoginScreen() {
                 onValueChange = {
                     email = it
                 },
-                label = { Text(text = "Username") }, modifier = Modifier.fillMaxWidth(),
+                label = { Text(text = "Password") }, modifier = Modifier.fillMaxWidth(),
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(text = "Forgot Password?",
-                modifier = Modifier.fillMaxWidth(),
-                style = TextStyle(fontSize = 16.sp,
-                    fontWeight = FontWeight.W400,
-                    textAlign = TextAlign.Center))
+            OutlinedTextField(
+                value = email,
+                onValueChange = {
+                    email = it
+                },
+                label = { Text(text = "Confirm Password") }, modifier = Modifier.fillMaxWidth(),
+            )
 
             Spacer(modifier = Modifier.height(8.dp))
 
+
             Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
-                Text(text = "Login Now")
+                Text(text = "Sign Up")
             }
 
             Spacer(modifier = Modifier.height(32.dp))
-
-            Row {
-                //TODO make signup clickable
-                Text(text = "New User Signup")
-
-                //TODO use an Image so that colors are displayed
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(painterResource(id = R.drawable.ic_google_logo), null)
-                }
-
-            }
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    LoginScreen()
+fun RegistrationPreview() {
+    RegistrationScreen()
 }
 

@@ -1,4 +1,4 @@
-package com.redheron.onboarding
+package co.redheron.onboarding
 
 import org.junit.Test
 
