@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/features/dashboard" />
             <option value="$PROJECT_DIR$/features/invoice" />
             <option value="$PROJECT_DIR$/features/onboarding" />
+            <option value="$PROJECT_DIR$/features/pdfgenerator" />
           </set>
         </option>
       </GradleProjectSettings>

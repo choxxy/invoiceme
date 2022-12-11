@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 w
@@ -13,3 +14,13 @@ P
  features/onboarding/build.gradle,1/0/102f462c01c8e21c512f1b0d1e73b59262abe88e
 M
 features/invoice/build.gradle,4/a/4a0f312bbf1b196d646f372e9072e56a2384b25b
+=======
+g
+7app/src/main/java/co/redheron/invoiceme/MainActivity.kt,f/a/faf435bdb22fd7c0d5800c86370f049b6c6c7b22
+@
+app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
+H
+core/common/build.gradle,5/0/50eefbe8ee6bc8430cdbdfa66f99d1404e0aa829
+<
+build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
+>>>>>>> c1ebc8f (Added pdfgenerator module)
