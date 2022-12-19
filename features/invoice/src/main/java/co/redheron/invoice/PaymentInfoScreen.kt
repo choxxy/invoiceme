@@ -46,7 +46,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Preview(showBackground = true)
 @Composable
 fun PaymentDefaultPreview() {
@@ -56,11 +55,14 @@ fun PaymentDefaultPreview() {
 @Composable
 fun PaymentDashboardCard(title: String, subTitle: String) {
     Card(shape = RoundedCornerShape(4.dp), elevation = CardDefaults.cardElevation(8.dp)) {
-        Row(modifier = Modifier
-            .height(72.dp)
-            .background(Color.White)
-            .fillMaxWidth()) {
-            Image(painter = painterResource(id = R.drawable.ic_launcher_background),
+        Row(
+            modifier = Modifier
+                .height(72.dp)
+                .background(Color.White)
+                .fillMaxWidth()
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_launcher_background),
                 contentDescription = "",
                 modifier = Modifier
                     .padding(8.dp)
@@ -68,14 +70,20 @@ fun PaymentDashboardCard(title: String, subTitle: String) {
                     .size(48.dp)
                     .clip(CircleShape)
             )
-            Column(modifier = Modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth(),
-                verticalArrangement = Arrangement.Center) {
-                Text(text = title,
-                    style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.W700))
-                Text(text = subTitle,
-                    style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.W200))
+            Column(
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .fillMaxWidth(),
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = title,
+                    style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.W700)
+                )
+                Text(
+                    text = subTitle,
+                    style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.W200)
+                )
             }
         }
     }
@@ -83,43 +91,65 @@ fun PaymentDashboardCard(title: String, subTitle: String) {
 
 @Composable
 fun PaymentRecentListItem(title: String, subTitle: String) {
-    Column(modifier = Modifier
-        .background(Color.White)
-        .fillMaxWidth()
-        .padding(vertical = 8.dp)) {
-        Row(modifier = Modifier.fillMaxWidth(),
+    Column(
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = title,
-                style = TextStyle(fontSize = 14.sp,
+            Text(
+                text = title,
+                style = TextStyle(
+                    fontSize = 14.sp,
                     fontWeight = FontWeight.W400,
-                    textAlign = TextAlign.Start),
+                    textAlign = TextAlign.Start
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(0.5f))
-            Text(text = subTitle,
-                style = TextStyle(fontSize = 14.sp,
+                    .weight(0.5f)
+            )
+            Text(
+                text = subTitle,
+                style = TextStyle(
+                    fontSize = 14.sp,
                     fontWeight = FontWeight.W200,
-                    textAlign = TextAlign.End), modifier = Modifier
+                    textAlign = TextAlign.End
+                ),
+                modifier = Modifier
                     .fillMaxWidth()
-                    .weight(0.5f))
+                    .weight(0.5f)
+            )
         }
-        Row(modifier = Modifier.fillMaxWidth(),
+        Row(
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "KES 5,0000",
-                style = TextStyle(fontSize = 12.sp,
+            Text(
+                text = "KES 5,0000",
+                style = TextStyle(
+                    fontSize = 12.sp,
                     fontWeight = FontWeight.W200,
-                    textAlign = TextAlign.Start),
+                    textAlign = TextAlign.Start
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(0.5f))
-            Text(text = "Paid",
-                style = TextStyle(fontSize = 12.sp,
+                    .weight(0.5f)
+            )
+            Text(
+                text = "Paid",
+                style = TextStyle(
+                    fontSize = 12.sp,
                     fontWeight = FontWeight.W200,
-                    textAlign = TextAlign.End), modifier = Modifier
+                    textAlign = TextAlign.End
+                ),
+                modifier = Modifier
                     .fillMaxWidth()
-                    .weight(0.5f))
+                    .weight(0.5f)
+            )
         }
     }
 }
@@ -127,7 +157,6 @@ fun PaymentRecentListItem(title: String, subTitle: String) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PaymentDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -147,13 +176,14 @@ fun PaymentDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
         }
     ) { contentPadding ->
         Box(modifier = Modifier.padding(contentPadding)) {
-
             Column(Modifier.padding(16.dp)) {
-                LazyVerticalGrid(columns = GridCells.Fixed(2),
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
                     // content padding for the grid
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
                     items(list) { item ->
                         PaymentDashboardCard(title = item.title, subTitle = item.subTitle)
                     }
@@ -163,12 +193,20 @@ fun PaymentDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
 
                 Card(shape = RoundedCornerShape(4.dp)) {
                     Column(modifier = Modifier.background(Color.White)) {
-                        Row(modifier = Modifier
-                            .height(36.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = "Recent Invoice",
-                                style = TextStyle(fontSize = 14.sp,
-                                    textAlign = TextAlign.Center), modifier = Modifier
-                                    .fillMaxWidth())
+                        Row(
+                            modifier = Modifier
+                                .height(36.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "Recent Invoice",
+                                style = TextStyle(
+                                    fontSize = 14.sp,
+                                    textAlign = TextAlign.Center
+                                ),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                            )
                         }
 
                         Divider(thickness = 0.5.dp, color = Color.LightGray)
@@ -181,18 +219,21 @@ fun PaymentDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
 
                         Divider(thickness = 0.5.dp, color = Color.LightGray)
 
-                        Row(modifier = Modifier
-                            .height(36.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = "See More",
+                        Row(
+                            modifier = Modifier
+                                .height(36.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "See More",
                                 style = TextStyle(fontSize = 14.sp, textAlign = TextAlign.Center),
                                 modifier = Modifier
-                                    .fillMaxWidth())
+                                    .fillMaxWidth()
+                            )
                         }
                     }
                 }
             }
-
         }
     }
-
 }
