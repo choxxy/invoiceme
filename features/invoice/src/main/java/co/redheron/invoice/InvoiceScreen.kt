@@ -1,6 +1,7 @@
 package co.redheron.invoice
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,12 +34,14 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun InvoiceScreen() {
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .background(Color.White)
                 .verticalScroll(rememberScrollState())
                 .fillMaxSize()
+                .weight(1f)
+                .padding(16.dp)
         ) {
             InvoiceHeader()
 
@@ -47,7 +50,6 @@ fun InvoiceScreen() {
             Card(shape = RoundedCornerShape(4.dp), elevation = CardDefaults.cardElevation(8.dp)) {
                 Column(
                     modifier = Modifier
-                        .height(144.dp)
                         .background(Color.White)
                         .fillMaxWidth()
                 ) {
@@ -111,16 +113,23 @@ fun InvoiceScreen() {
                     InvoiceItem("Attachment")
                 }
             }
+
+            Spacer(modifier = Modifier.size(8.dp))
         }
 
         Row(
             modifier = Modifier
+                .height(92.dp)
                 .background(Color.White)
-                .fillMaxWidth()
+                .fillMaxWidth().padding(16.dp),
+            horizontalArrangement = Arrangement.End
+
         ) {
             OutlinedButton(onClick = { /*TODO*/ }) {
                 Text(text = "Preview")
             }
+
+            Spacer(modifier = Modifier.size(8.dp))
 
             Button(onClick = { /*TODO*/ }) {
                 Text(text = "Save")
@@ -172,7 +181,7 @@ fun InvoiceItem(title: String) {
             Text(
                 text = title,
                 style = TextStyle(
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     fontWeight = FontWeight.W300,
                     textAlign = TextAlign.Start
                 ),
