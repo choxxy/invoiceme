@@ -1,4 +1,4 @@
-package co.redheron.invoice
+package co.redheron.invoice.newclient
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,10 +22,8 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,13 +37,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import co.redheron.invoice.BusinessDetailsScreen
+import co.redheron.invoice.R
+import co.redheron.invoice.shared.views.TextInput
 import com.dsc.form_builder.BaseState
 import com.dsc.form_builder.FormState
 import com.dsc.form_builder.TextFieldState
 
 @Preview(showBackground = true)
 @Composable
-fun AddClientPreview() {
+fun NewClientPreview() {
     val formState: FormState<BaseState<*>> = FormState(
         listOf(
             TextFieldState("username"),
@@ -57,7 +58,7 @@ fun AddClientPreview() {
 }
 
 @Composable
-fun AddClientCard(title: String) {
+fun NewClientCard(title: String) {
     Card(shape = RoundedCornerShape(4.dp), elevation = CardDefaults.cardElevation(8.dp)) {
         Row(
             modifier = Modifier
@@ -84,7 +85,7 @@ fun AddClientCard(title: String) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddClientScreen(formState: FormState<BaseState<*>>) {
+fun NewClientScreen(formState: FormState<BaseState<*>>) {
     val usernameState: TextFieldState = formState.getState("username")
     val emailState: TextFieldState = formState.getState("email")
     val numberState: TextFieldState = formState.getState("number")
@@ -92,7 +93,7 @@ fun AddClientScreen(formState: FormState<BaseState<*>>) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.dummy_name)) },
+                title = { Text(text = stringResource(id = R.string.new_client)) },
                 navigationIcon = {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(Icons.Filled.ArrowBack, null)
@@ -112,7 +113,7 @@ fun AddClientScreen(formState: FormState<BaseState<*>>) {
                 Column(Modifier.padding(16.dp)) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "Personal Details",
+                        text = "Client Details",
                         style = MaterialTheme.typography.headlineMedium
                     )
 
@@ -152,5 +153,3 @@ fun AddClientScreen(formState: FormState<BaseState<*>>) {
         }
     }
 }
-
-

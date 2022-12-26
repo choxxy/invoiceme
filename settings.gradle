@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 rootProject.name = "Invoice Me"
@@ -19,3 +20,4 @@ include ':core:common'
 include ':features:onboarding'
 include ':features:invoice'
 include ':features:pdfgenerator'
+include ':libs:form-builder'

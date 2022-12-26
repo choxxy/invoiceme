@@ -5,18 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -24,13 +18,15 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,15 +37,24 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dsc.form_builder.BaseState
+import com.dsc.form_builder.FormState
+import com.dsc.form_builder.TextFieldState
 
 @Preview(showBackground = true)
 @Composable
 fun BizDetailsDefaultPreview() {
-    BizDetailsDashboard(list, list2)
+    val formState: FormState<BaseState<*>> = FormState(
+        listOf(
+            TextFieldState("username"),
+            TextFieldState("email"),
+            TextFieldState("number")
+        )
+    )
+    BusinessDetailsScreen(formState)
 }
 
 @Composable
@@ -89,10 +94,13 @@ fun BizDetailsDashboardCard(title: String, subTitle: String) {
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BizDetailsDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
+fun BusinessDetailsScreen(formState: FormState<BaseState<*>>) {
+    val usernameState: TextFieldState = formState.getState("username")
+    val emailState: TextFieldState = formState.getState("email")
+    val numberState: TextFieldState = formState.getState("number")
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -112,67 +120,77 @@ fun BizDetailsDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
         }
     ) { contentPadding ->
         Box(modifier = Modifier.padding(contentPadding)) {
-            Column(Modifier.padding(16.dp)) {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    // content padding for the grid
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    items(list) { item ->
-                        BizDetailsDashboardCard(title = item.title, subTitle = item.subTitle)
-                    }
-                }
+            Card(shape = RoundedCornerShape(8.dp), elevation = CardDefaults.cardElevation(8.dp)) {
+                Column(Modifier.padding(16.dp)) {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "Personal Details",
+                        style = MaterialTheme.typography.headlineMedium
+                    )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
-                Card(shape = RoundedCornerShape(4.dp)) {
-                    Column(modifier = Modifier.background(Color.White)) {
-                        Row(
-                            modifier = Modifier
-                                .height(36.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = "Recent Invoice",
-                                style = TextStyle(
-                                    fontSize = 14.sp,
-                                    textAlign = TextAlign.Center
-                                ),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            )
-                        }
+                    Image(
+                        alignment = Alignment.Center,
+                        painter = painterResource(id = R.drawable.ic_launcher_background),
+                        contentDescription = ""
+                    )
 
-                        Divider(thickness = 0.5.dp, color = Color.LightGray)
+                    TextInput(label = "Business Name", state = usernameState)
 
-                        LazyColumn(modifier = Modifier.padding(start = 8.dp, end = 8.dp)) {
-                            items(list2) { item ->
-                                BizDetailsRecentListItem(
-                                    title = item.title,
-                                    subTitle = item.subTitle
-                                )
-                            }
-                        }
+                    Spacer(modifier = Modifier.height(10.dp))
 
-                        Divider(thickness = 0.5.dp, color = Color.LightGray)
+                    TextInput(label = "Email Address", state = emailState)
 
-                        Row(
-                            modifier = Modifier
-                                .height(36.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = "See More",
-                                style = TextStyle(fontSize = 14.sp, textAlign = TextAlign.Center),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            )
-                        }
-                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    TextInput(label = "Phone Number", state = numberState)
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    TextInput(label = "Billing Address", state = usernameState)
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    TextInput(label = "", state = emailState)
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    TextInput(label = "Business Website", state = numberState)
+
+                    Spacer(modifier = Modifier.height(30.dp))
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TextInput(label: String, state: TextFieldState) {
+    Column {
+        OutlinedTextField(
+            value = state.value,
+            isError = state.hasError,
+            label = { Text(text = label) },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(16.dp),
+            onValueChange = { state.change(it) },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                errorBorderColor = MaterialTheme.colorScheme.error,
+                focusedBorderColor = MaterialTheme.colorScheme.onPrimary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.onPrimary
+            )
+        )
+
+        if (state.hasError) {
+            Text(
+                text = state.errorMessage,
+                modifier = Modifier.padding(start = 12.dp, top = 4.dp),
+                style = MaterialTheme.typography.displaySmall.copy(
+                    color = MaterialTheme.colorScheme.error
+                )
+            )
         }
     }
 }

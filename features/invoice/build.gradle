@@ -37,18 +37,22 @@ android {
 }
 
 dependencies {
+
+
+    implementation project(path: ':libs:form-builder')
+
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
-<<<<<<< HEAD
     // Compose
     def composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
+    implementation 'androidx.compose.runtime:runtime-livedata'
     // Material Design 3
     implementation 'androidx.compose.material3:material3'
     // Android Studio Preview support
@@ -68,6 +72,4 @@ dependencies {
 
     implementation 'androidx.activity:activity-compose:1.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
-    implementation 'androidx.compose.runtime:runtime-livedata'
-    implementation 'com.github.jkuatdsc:form-builder:1.0.5'
 }

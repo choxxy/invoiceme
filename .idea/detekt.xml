@@ -3,7 +3,7 @@
   <component name="DetektPluginSettings">
     <option name="configurationFilePaths">
       <set>
-        <option value="$USER_HOME$/Apps/detekt/default-detekt-config.yml" />
+        <option value="$PROJECT_DIR$/../detekt/detekt.yml" />
       </set>
     </option>
     <option name="enableFormatting" value="true" />
