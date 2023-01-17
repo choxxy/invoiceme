@@ -2,4 +2,5 @@
 <resources>
     <string name="dummy_name">Dummy</string>
     <string name="new_client">New Client</string>
+    <string name="add_item">Add Item</string>
 </resources>

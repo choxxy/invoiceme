@@ -49,83 +49,12 @@ import androidx.compose.ui.unit.sp
 @Preview(showBackground = true)
 @Composable
 fun InvoiceListDefaultPreview() {
-    InvoiceListDashboard(list, list2)
-}
-
-@Composable
-fun InvoiceListDashboardCard(title: String, subTitle: String) {
-    Card(shape = RoundedCornerShape(4.dp), elevation = CardDefaults.cardElevation(8.dp)) {
-        Row(modifier = Modifier
-            .height(72.dp)
-            .background(Color.White)
-            .fillMaxWidth()) {
-            Image(painter = painterResource(id = R.drawable.ic_launcher_background),
-                contentDescription = "",
-                modifier = Modifier
-                    .padding(8.dp)
-                    .align(Alignment.CenterVertically)
-                    .size(48.dp)
-                    .clip(CircleShape)
-            )
-            Column(modifier = Modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth(),
-                verticalArrangement = Arrangement.Center) {
-                Text(text = title,
-                    style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.W700))
-                Text(text = subTitle,
-                    style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.W200))
-            }
-        }
-    }
-}
-
-@Composable
-fun InvoiceListRecentListItem(title: String, subTitle: String) {
-    Column(modifier = Modifier
-        .background(Color.White)
-        .fillMaxWidth()
-        .padding(vertical = 8.dp)) {
-        Row(modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(text = title,
-                style = TextStyle(fontSize = 14.sp,
-                    fontWeight = FontWeight.W400,
-                    textAlign = TextAlign.Start),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.5f))
-            Text(text = subTitle,
-                style = TextStyle(fontSize = 14.sp,
-                    fontWeight = FontWeight.W200,
-                    textAlign = TextAlign.End), modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.5f))
-        }
-        Row(modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(text = "KES 5,0000",
-                style = TextStyle(fontSize = 12.sp,
-                    fontWeight = FontWeight.W200,
-                    textAlign = TextAlign.Start),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.5f))
-            Text(text = "Paid",
-                style = TextStyle(fontSize = 12.sp,
-                    fontWeight = FontWeight.W200,
-                    textAlign = TextAlign.End), modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.5f))
-        }
-    }
+    InvoiceListDashboard()
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InvoiceListDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
+fun InvoiceListDashboard() {
 
     Scaffold(
         topBar = {
@@ -153,9 +82,7 @@ fun InvoiceListDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) 
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    items(list) { item ->
-                        InvoiceListDashboardCard(title = item.title, subTitle = item.subTitle)
-                    }
+
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -173,9 +100,7 @@ fun InvoiceListDashboard(list: List<DashboardItem>, list2: List<DashboardItem>) 
                         Divider(thickness = 0.5.dp, color = Color.LightGray)
 
                         LazyColumn(modifier = Modifier.padding(start = 8.dp, end = 8.dp)) {
-                            items(list2) { item ->
-                                InvoiceListRecentListItem(title = item.title, subTitle = item.subTitle)
-                            }
+
                         }
 
                         Divider(thickness = 0.5.dp, color = Color.LightGray)
