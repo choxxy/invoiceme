@@ -44,6 +44,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
     }
+    namespace 'com.dsc.form_builder'
 }
 
 dependencies {
