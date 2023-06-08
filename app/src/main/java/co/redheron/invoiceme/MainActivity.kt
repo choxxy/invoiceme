@@ -223,7 +223,7 @@ fun Dashboard(list: List<DashboardItem>, list2: List<DashboardItem>) {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                     // content padding for the grid
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                    contentPadding = PaddingValues(horizontal = 4.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
