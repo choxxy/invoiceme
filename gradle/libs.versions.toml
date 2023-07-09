@@ -76,7 +76,7 @@ room = "2.4.2"
 rxAndroid = "2.0.1"
 rxJava = "2.0.8"
 rxPreferences = "2.0.0-RC1"
-shortcutBadger = "1.1.16"
+shortcutBadger = "1.1.22"
 timber = "5.0.1"
 turbine = "0.5.2"
 
